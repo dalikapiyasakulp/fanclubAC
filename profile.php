@@ -128,8 +128,9 @@
                     <?php
                         if ($rowwork == null){?>
                             <div class="card-header bg-transparent border-0">
-                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>ผลงานเพลง</h3>
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i> ผลงานเพลง</h3>
                         </div>
+                        
                         <div class="card-header bg-transparent text-center">
                         <h3><?php echo 'ไม่มีผลงานเพลง'; ?></h3>
                         
