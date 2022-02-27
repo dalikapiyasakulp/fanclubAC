@@ -1,28 +1,10 @@
 <?php
 
     include_once('functions.php');
-<<<<<<< HEAD
     $artistdata = new DB_con();
     $user = new artist();
     
-=======
 
-    session_start();
-
-    if ($_SESSION['id'] == "") {
-        header("location: login.php");
-    } else {
-
-    $fetchdata = new DB_con();
-    $user = new Member();
-    $leader = new Leader();
-    $location = new Leader_location();
-    $bank = new Bank();
-
-    $sql = $user->getUserInfo($_SESSION['id']);
-    while($row = mysqli_fetch_array($sql)) {
-
->>>>>>> 06da73aca9c22add14eef76f93f2a47af37c87cd
 ?>
 
 <html>
@@ -56,7 +38,6 @@
                     <div class="col-lg-3">
                         <div class="card shadow-sm">
                             <div class="card-header bg-transparent text-center">
-<<<<<<< HEAD
                             <?php
                             $sql = $user->getUserInfo(1);
                             $row = mysqli_fetch_array($sql)
@@ -70,43 +51,6 @@
                             </div>
                             
                             
-=======
-                                <?php echo '<img class="profile_img" src="data:image/png;base64,'. base64_encode($row['Pic']).'" alt="student dp">'; ?>
-                                <h3><?php echo '@', $row['Username']; ?></h3>
-                            </div>
-                            <div class="card-body">
-                                <p class="mb-0"><strong class="pr-1">ระดับสมาชิก:</strong>
-                                    <?php 
-                                        if($row['userType'] == 'leader'){
-                                            echo 'ผู้นำกิจกรรม';
-                                        }
-                                        else{
-                                            echo 'สมาชิกทั่วไป';
-                                        } 
-                                    ?>
-                                </p>
-                                <p class="mb-0"><strong class="pr-1">หมายเลขบัตรประชาชน:</strong><?php echo $row['NationalID'];?></p>
-                                <p class="mb-0"><strong class="pr-1">ชื่อ-นามสกุล: </strong><?php echo $row['Title_name'], $row['Fname'], ' ', $row['Lname'] ;?></p>
-                                <?php
-                                if($row['userType'] == 'leader'){
-                                    $sql1 = $leader->getLeaderInfo($row['NationalID']);
-                                    while($row1 = mysqli_fetch_array($sql1)){
-                                ?>
-                                <p class="mb-0"><strong class="pr-1">วันเดือนปีเกิด:</strong><?php echo $row1['Bdate'];?></p>
-                                <p class="mb-0"><strong class="pr-1">เพศ:</strong><?php echo $row['Sex'];?></p>
-                                <p class="mb-0"><strong class="pr-1">ศิลปินที่ดูแล:</strong><?php echo $row1['Artist'];?></p>
-                                <?php
-                                    }
-                                }                            
-                                ?>
-                            </div>   
-                        </div>
-                        <div class="box">
-                            <a href="#change-profile" class="button">Change your profile</a>
-                        </div>
-                        <div class="box">
-                            <a href="logout.php" class="button">Logout</a>
->>>>>>> 06da73aca9c22add14eef76f93f2a47af37c87cd
                         </div>
                     
                     </div>
@@ -126,142 +70,21 @@
                                     
                                 </div>
                             </div>
-<<<<<<< HEAD
                             
                             
-=======
-                        <div class="card-body pt-0">
-                            <table class="table table-bordered">
-                            <?php
-                                if($row['userType'] == 'leader'){
-                                    $sql1 = $leader->getLeaderInfo($row['NationalID']);
-                                    while($row1 = mysqli_fetch_array($sql1)){
-                                        $sql2 = $location->getLocation($row1['PostNo']);
-                                        while($row2 = mysqli_fetch_array($sql2)){
-                            ?>
-                            <tr>
-                                <th width="30%">เลขที่</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row1['HouseNo'];?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">ตำบล</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row2['subdistrict']; ?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">อำเภอ</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row2['district']; ?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">จังหวัด</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row2['province']; ?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">รหัสไปรษณีย์</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row2['PostNo']; ?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">ประเทศ</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row1['Country']; ?></td>
-                            </tr>
-                            <?php
-                                        }
-                                    }
-                                }
-                            ?>
-                            <tr>
-                                <th width="30%">E-mail</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row['email']; ?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">เบอร์โทรศัพท์</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row['Tel']; ?></td>
-                            </tr>
-                            </table>
->>>>>>> 06da73aca9c22add14eef76f93f2a47af37c87cd
                         </div>
                     
                     </div>
-<<<<<<< HEAD
-                    <!-- <div class="col-lg-3">
-                        <div class="card shadow-sm">
-                            <div class="card-header bg-transparent text-center">
-                                <?php echo '<img class="profile_img" src="data:image/png;base64,'. base64_encode($row['pic_soloartist']).'" alt="student dp">'; ?>
-                                <h3><?php echo '', $row['name_soloartist']; ?></h3>
-                                <h6><?php echo 'สังกัด ', $row['affiliation_soloartist']; ?></h6>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">รายละเอียด</button>
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    
-                    </div> -->
+
                     
                     
-=======
-                    <?php
-                        if($row['userType'] == 'leader'){
-                            $sql1 = $leader->getLeaderInfo($row['NationalID']);
-                                while($row1 = mysqli_fetch_array($sql1)){
-                                $sql3 = $bank->getBank($row1['BankID']);
-                                    while($row3 = mysqli_fetch_array($sql3)){
-                    ?>
-                    <div style="height: 26px"></div>
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-transparent border-0">
-                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>ข้อมูลธนาคาร</h3>
-                        </div>
-                        <div class="card-body pt-0">
-                            <table class="table table-bordered">
-                            <tr>
-                                <th width="30%">เลขบัญชี</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row3['BankID'];?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">ธนาคาร</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row3['BankName']; ?></td>
-                            </tr>
-                            <tr>
-                                <th width="30%">ชื่อบัญชี</th>
-                                <td width="2%">:</td>
-                                <td><?php echo $row3['BankNameAcc']; ?></td>
-                            </tr>
-                            </table>
-                        </div>
-                        </div>
-                    </div>
-                    <?php
-                                }
-                            }
-                        }
-                    ?>
-                    </div>
->>>>>>> 06da73aca9c22add14eef76f93f2a47af37c87cd
                 </div>
             </div>
         </section>
     </body>
     <?php
-<<<<<<< HEAD
                 
             
         
     ?>
 </html>
-=======
-            
-    }
-}?>
-</html>
->>>>>>> 06da73aca9c22add14eef76f93f2a47af37c87cd
