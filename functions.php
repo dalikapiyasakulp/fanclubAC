@@ -21,7 +21,6 @@
             return $result;
         }
 
-<<<<<<< HEAD
         public function artistdata() {
             $result = mysqli_query($this->dbcon, "SELECT * FROM artist");
             return $result;
@@ -37,8 +36,6 @@
             return $result;
         }
 
-=======
->>>>>>> 06da73aca9c22add14eef76f93f2a47af37c87cd
         public function delete($NationalID) {
             $deleterecord = mysqli_query($this->dbcon, "DELETE FROM member WHERE NationalID = '$NationalID'");
             return $deleterecord;
